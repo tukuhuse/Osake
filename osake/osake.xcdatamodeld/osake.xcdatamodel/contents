@@ -10,7 +10,7 @@
     </entity>
     <entity name="Osake" representedClassName="Osake" syncable="YES" codeGenerationType="class">
         <attribute name="alcol" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="category_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="category_id" optional="YES" attributeType="String"/>
         <attribute name="hotflavor" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
