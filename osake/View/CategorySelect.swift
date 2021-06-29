@@ -42,9 +42,14 @@ struct CategorySelect: View {
 
 struct CategorySelect_Previews: PreviewProvider {
     
-    static let viewContext = PersistenceController.preview.container.viewContext
+    static let container = PersistenceController.preview.container
+    static let viewContext = container.viewContext
     
     static var previews: some View {
+        
+        //テストデータの全削除
+        let request = NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: "Category"))
+        try! container.persistentStoreCoordinator.execute(request, with: viewContext)
         
         Category.create(in: viewContext, name: "sample1", kind: .liquor)
         Category.create(in: viewContext, name: "sample2", kind: .spirit)
