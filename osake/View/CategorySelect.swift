@@ -13,22 +13,40 @@ struct CategorySelect: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Category.name, ascending: true)], animation: .default) var CategoryList: FetchedResults<Category>
     
-    let kind: Category.kind
+    @State var kind: Category.kind
+    @State var addflag: Bool = false
+    
+    fileprivate func deleteCategory(at offsets: IndexSet) {
+        for index in offsets {
+            let entity = CategoryList[index]
+            viewContext.delete(entity)
+        }
+        do {
+            try viewContext.save()
+        } catch {
+            print("Delete Error. \(offsets)")
+        }
+    }
     
     var body: some View {
         Section(header: HStack{
                     Text("\(kind.toString())")
             Spacer()
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button(action: {
+                self.addflag = true
+            }, label: {
                 Text("追加")
             })
         }) {
             List {
+                if self.addflag {
+                    addCategoryList(addflag: $addflag,kind: $kind)
+                }
                 ForEach(CategoryList, id:\.self) { category in
                     if self.kind.rawValue == category.kind {
                         Text(category.name!)
                     }
-                }
+                }.onDelete(perform: deleteCategory)
             }
         }
     }
@@ -36,7 +54,7 @@ struct CategorySelect: View {
 
 struct CategorySelect_Previews: PreviewProvider {
     
-    static let container = PersistenceController.preview.container
+    static let container = PersistenceController.shared.container
     static let viewContext = container.viewContext
     
     static var previews: some View {
