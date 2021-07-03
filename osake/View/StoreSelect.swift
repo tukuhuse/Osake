@@ -12,12 +12,26 @@ struct StoreSelect: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)], animation: .default) var storeList: FetchedResults<Store>
     
+    //データ削除
+    fileprivate func storedelete(at offsets: IndexSet) {
+        for index in offsets {
+            let entity = storeList[index]
+            viewContext.delete(entity)
+        }
+        do {
+            try viewContext.save()
+        } catch {
+            print("Delete Error. \(offsets)")
+        }
+    }
+    
     var body: some View {
         Form{
             List {
                 ForEach(storeList, id:\.self) { store in
                     Text(store.name!)
                 }
+                .onDelete(perform: storedelete)
             }
         }
     }
