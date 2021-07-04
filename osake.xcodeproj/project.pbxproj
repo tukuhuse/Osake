@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D1677B322691D12D00D9E454 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1677B312691D12D00D9E454 /* KeyboardObserver.swift */; };
+		D1677B342691F1FD00D9E454 /* StoreDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1677B332691F1FD00D9E454 /* StoreDetail.swift */; };
+		D1677B362691F24000D9E454 /* StoreDetailContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1677B352691F24000D9E454 /* StoreDetailContent.swift */; };
+		D1677B382691F25100D9E454 /* StoreDetailMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1677B372691F25100D9E454 /* StoreDetailMenu.swift */; };
+		D1677B3A2691F6FC00D9E454 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1677B392691F6FC00D9E454 /* Binding+Extension.swift */; };
 		D16D1C3F2691C83700C9C1F2 /* QuickNewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D1C3E2691C83700C9C1F2 /* QuickNewStore.swift */; };
 		D1BDFF742688BFF4001F9398 /* osakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDFF732688BFF4001F9398 /* osakeApp.swift */; };
 		D1BDFF762688BFF4001F9398 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDFF752688BFF4001F9398 /* ContentView.swift */; };
@@ -44,6 +48,10 @@
 
 /* Begin PBXFileReference section */
 		D1677B312691D12D00D9E454 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		D1677B332691F1FD00D9E454 /* StoreDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetail.swift; sourceTree = "<group>"; };
+		D1677B352691F24000D9E454 /* StoreDetailContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailContent.swift; sourceTree = "<group>"; };
+		D1677B372691F25100D9E454 /* StoreDetailMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailMenu.swift; sourceTree = "<group>"; };
+		D1677B392691F6FC00D9E454 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		D16D1C3E2691C83700C9C1F2 /* QuickNewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickNewStore.swift; sourceTree = "<group>"; };
 		D1BDFF702688BFF4001F9398 /* osake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = osake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BDFF732688BFF4001F9398 /* osakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = osakeApp.swift; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 				D1BDFFAB2689F6CD001F9398 /* Category+Extension.swift */,
 				D1BDFFAF268A1A94001F9398 /* Osake+Extension.swift */,
 				D1E37057268E030600543507 /* Store+Extension.swift */,
+				D1677B392691F6FC00D9E454 /* Binding+Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,6 +182,9 @@
 				D1D5AFA4268CA13E005872F6 /* addCategoryList.swift */,
 				D16D1C3E2691C83700C9C1F2 /* QuickNewStore.swift */,
 				D1E37059268E069A00543507 /* StoreSelect.swift */,
+				D1677B332691F1FD00D9E454 /* StoreDetail.swift */,
+				D1677B352691F24000D9E454 /* StoreDetailContent.swift */,
+				D1677B372691F25100D9E454 /* StoreDetailMenu.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,13 +327,17 @@
 			files = (
 				D1BDFFAC2689F6CD001F9398 /* Category+Extension.swift in Sources */,
 				D1E37058268E030600543507 /* Store+Extension.swift in Sources */,
+				D1677B382691F25100D9E454 /* StoreDetailMenu.swift in Sources */,
 				D1BDFF7D2688BFF4001F9398 /* Persistence.swift in Sources */,
 				D1BDFF802688BFF4001F9398 /* osake.xcdatamodeld in Sources */,
+				D1677B3A2691F6FC00D9E454 /* Binding+Extension.swift in Sources */,
 				D1D5AFA5268CA13E005872F6 /* addCategoryList.swift in Sources */,
 				D1E3705A268E069A00543507 /* StoreSelect.swift in Sources */,
 				D1BDFF762688BFF4001F9398 /* ContentView.swift in Sources */,
+				D1677B342691F1FD00D9E454 /* StoreDetail.swift in Sources */,
 				D1BDFF742688BFF4001F9398 /* osakeApp.swift in Sources */,
 				D1BDFFB0268A1A94001F9398 /* Osake+Extension.swift in Sources */,
+				D1677B362691F24000D9E454 /* StoreDetailContent.swift in Sources */,
 				D16D1C3F2691C83700C9C1F2 /* QuickNewStore.swift in Sources */,
 				D1677B322691D12D00D9E454 /* KeyboardObserver.swift in Sources */,
 				D1BDFFAE268A0F73001F9398 /* CategorySelect.swift in Sources */,

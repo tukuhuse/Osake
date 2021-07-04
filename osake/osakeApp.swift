@@ -13,8 +13,8 @@ struct osakeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            StoreSelect().environment(\.managedObjectContext, persistenceController.container.viewContext)
-            //ContentView()
+            //StoreSelect().environment(\.managedObjectContext, persistenceController.container.viewContext)
+            ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
