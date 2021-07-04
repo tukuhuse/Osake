@@ -11,7 +11,6 @@ struct StoreSelect: View {
     
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Store.name, ascending: true)], animation: .default) var storeList: FetchedResults<Store>
-    @Environment(\.editMode) var envEditMode
     
     //データ削除
     fileprivate func storedelete(at offsets: IndexSet) {
@@ -27,21 +26,23 @@ struct StoreSelect: View {
     }
     
     var body: some View {
-        Form{
-            List {
-                ForEach(storeList, id:\.self) { store in
-                    Text(store.name!)
+        NavigationView {
+            Form{
+                List {
+                    ForEach(storeList, id:\.self) { store in
+                        Text(store.name!)
+                    }
+                    .onDelete(perform: storedelete)
                 }
-                .onDelete(perform: envEditMode?.wrappedValue.isEditing ?? false ? storedelete : nil)
             }
-            QuickNewStore().padding()
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
             }
+            .navigationBarTitle(Text("🏬の選択"))
         }
-        .navigationBarTitle(Text("🏬の選択"))
+        QuickNewStore().padding()
     }
 }
 
@@ -62,8 +63,7 @@ struct StoreSelect_Previews: PreviewProvider {
         Store.create(in: viewContext, name: "和民")
         Store.create(in: viewContext, name: "山内農場")
         
-        return NavigationView{
+        return
             StoreSelect().environment(\.managedObjectContext, viewContext).navigationBarItems(trailing: EditButton())
-        }
     }
 }

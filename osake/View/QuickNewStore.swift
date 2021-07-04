@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct addStoreList: View {
+struct QuickNewStore: View {
     
     @State var newStore: String = ""
     @Environment(\.managedObjectContext) var viewContext
+    @ObservedObject var keyboard = KeyboardObserver()
     
     fileprivate func addNewStore() {
         Store.create(in: self.viewContext, name: self.newStore)
@@ -27,25 +28,32 @@ struct addStoreList: View {
                 addNewStore()
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
+            Spacer()
             Button(action: {
                 addNewStore()
             }) {
                 Text("追加")
             }
+            Spacer()
             Button(action: {
                 cancelStore()
             }) {
                 Text("Cancel").foregroundColor(.red)
             }
-        }
+        }.onAppear(perform: {
+            self.keyboard.startObserve()
+        }).onDisappear(perform: {
+            self.keyboard.stopObserve()
+        }).padding(.bottom, self.keyboard.keyboardHeight)
+        .animation(.easeOut)
     }
 }
 
-struct addStoreList_Previews: PreviewProvider {
+struct QuickNewStore_Previews: PreviewProvider {
     
     static let viewContext = PersistenceController.preview.container.viewContext
     
     static var previews: some View {
-        addStoreList().environment(\.managedObjectContext, viewContext)
+        QuickNewStore().environment(\.managedObjectContext, viewContext)
     }
 }
