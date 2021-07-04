@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D16D1C3F2691C83700C9C1F2 /* QuickNewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D1C3E2691C83700C9C1F2 /* QuickNewStore.swift */; };
 		D1BDFF742688BFF4001F9398 /* osakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDFF732688BFF4001F9398 /* osakeApp.swift */; };
 		D1BDFF762688BFF4001F9398 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDFF752688BFF4001F9398 /* ContentView.swift */; };
 		D1BDFF782688BFF4001F9398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BDFF772688BFF4001F9398 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D16D1C3E2691C83700C9C1F2 /* QuickNewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickNewStore.swift; sourceTree = "<group>"; };
 		D1BDFF702688BFF4001F9398 /* osake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = osake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BDFF732688BFF4001F9398 /* osakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = osakeApp.swift; sourceTree = "<group>"; };
 		D1BDFF752688BFF4001F9398 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			children = (
 				D1BDFFAD268A0F73001F9398 /* CategorySelect.swift */,
 				D1D5AFA4268CA13E005872F6 /* addCategoryList.swift */,
+				D16D1C3E2691C83700C9C1F2 /* QuickNewStore.swift */,
 				D1E37059268E069A00543507 /* StoreSelect.swift */,
 			);
 			path = View;
@@ -316,6 +319,7 @@
 				D1BDFF762688BFF4001F9398 /* ContentView.swift in Sources */,
 				D1BDFF742688BFF4001F9398 /* osakeApp.swift in Sources */,
 				D1BDFFB0268A1A94001F9398 /* Osake+Extension.swift in Sources */,
+				D16D1C3F2691C83700C9C1F2 /* QuickNewStore.swift in Sources */,
 				D1BDFFAE268A0F73001F9398 /* CategorySelect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
