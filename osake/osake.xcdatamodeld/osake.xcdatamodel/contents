@@ -20,7 +20,8 @@
     </entity>
     <entity name="Store" representedClassName="Store" syncable="YES" codeGenerationType="class">
         <attribute name="comment" optional="YES" attributeType="String"/>
-        <attribute name="costperformance" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="drinkcostperformance" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="foodcostperformance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -30,6 +31,6 @@
         <element name="Category" positionX="-54" positionY="54" width="128" height="74"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
         <element name="Osake" positionX="-63" positionY="-9" width="128" height="149"/>
-        <element name="Store" positionX="-54" positionY="63" width="128" height="119"/>
+        <element name="Store" positionX="-54" positionY="63" width="128" height="134"/>
     </elements>
 </model>

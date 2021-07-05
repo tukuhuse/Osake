@@ -27,6 +27,7 @@
 		D1D5AFA5268CA13E005872F6 /* addCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D5AFA4268CA13E005872F6 /* addCategoryList.swift */; };
 		D1E37058268E030600543507 /* Store+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E37057268E030600543507 /* Store+Extension.swift */; };
 		D1E3705A268E069A00543507 /* StoreSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E37059268E069A00543507 /* StoreSelect.swift */; };
+		D1F9920B2693575300B27784 /* StarSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F9920A2693575300B27784 /* StarSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		D1D5AFA4268CA13E005872F6 /* addCategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCategoryList.swift; sourceTree = "<group>"; };
 		D1E37057268E030600543507 /* Store+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+Extension.swift"; sourceTree = "<group>"; };
 		D1E37059268E069A00543507 /* StoreSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSelect.swift; sourceTree = "<group>"; };
+		D1F9920A2693575300B27784 /* StarSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				D1E37059268E069A00543507 /* StoreSelect.swift */,
 				D1677B332691F1FD00D9E454 /* StoreDetail.swift */,
 				D1677B352691F24000D9E454 /* StoreDetailContent.swift */,
+				D1F9920A2693575300B27784 /* StarSlider.swift */,
 				D1677B372691F25100D9E454 /* StoreDetailMenu.swift */,
 			);
 			path = View;
@@ -332,6 +335,7 @@
 				D1BDFF802688BFF4001F9398 /* osake.xcdatamodeld in Sources */,
 				D1677B3A2691F6FC00D9E454 /* Binding+Extension.swift in Sources */,
 				D1D5AFA5268CA13E005872F6 /* addCategoryList.swift in Sources */,
+				D1F9920B2693575300B27784 /* StarSlider.swift in Sources */,
 				D1E3705A268E069A00543507 /* StoreSelect.swift in Sources */,
 				D1BDFF762688BFF4001F9398 /* ContentView.swift in Sources */,
 				D1677B342691F1FD00D9E454 /* StoreDetail.swift in Sources */,

@@ -21,11 +21,33 @@ struct StoreDetailContent: View {
     }
     
     var body: some View {
-        Form {
-            Section(header: Text("店名")) {
-                TextField("店名を入力", text: Binding($store.name, "new Store"))
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+        NavigationView {
+            Form {
+                Section(header: Text("店名")) {
+                    TextField("店名を入力", text: Binding($store.name, "new Store"))
+                }
+                Section(header: Text("食べ物のコスパ")) {
+                    Slider(value: $store.foodcostperformance, in: 0...5, step: 0.5)
+                    Text("\(store.foodcostperformance)")
+                }
+                Section(header: Text("お酒のコスパ")) {
+                    Slider(value: $store.drinkcostperformance, in: 0...5, step: 0.5)
+                    Text("\(store.drinkcostperformance)")
+                }
+                Section(header: Text("コメント")) {
+                    TextEditor(text: Binding($store.comment, ""))
+                }
             }
+            .navigationTitle("お店の情報")
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        self.save()
+                    }, label: {
+                        Text("保存")
+                    })
+                }
+            })
         }
     }
 }
