@@ -6,23 +6,28 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct StarSlider: View {
     @Binding var evaluation: Double
+    @State var intevaluation: Int
+    @State var decimaleflag: Bool
     
     init(evaluation: Binding<Double>) {
         self._evaluation = evaluation
+        self.intevaluation = Int(evaluation)
+        self.decimaleflag = evaluation - Double(self.intevaluation) == 0 ? true : false
     }
     
     var body: some View {
         HStack {
-            ForEach(1...floor(self.evaluation), id:\.self) { star in
+            ForEach(0..<self.intevaluation) { star in
                 Image(systemName: "star.leadinghalf.fill").foregroundColor(.yellow)
             }
-            if self.evaluation == 0.5 {
+            if self.decimaleflag {
                 Image(systemName: "star.leadinghalf.fill").foregroundColor(.yellow)
             }
-            ForEach(self.floorevaluation...5, id:\.self) { colorlessstar in
+            ForEach(self.intevaluation+1..<6) { colorlessstar in
                 Image(systemName: "star.fill")
             }
         }
