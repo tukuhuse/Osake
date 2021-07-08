@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StoreDetailContent: View {
     @ObservedObject var store: Store
+    @ObservedObject var keyboard = KeyboardObserver()
     @Environment(\.managedObjectContext) var viewContext
     
     fileprivate func save() {
@@ -48,7 +49,11 @@ struct StoreDetailContent: View {
                     })
                 }
             })
-        }
+        }.onAppear{
+            self.keyboard.startObserve()
+        }.onDisappear{
+            self.keyboard.stopObserve()
+        }.padding(.bottom, keyboard.keyboardHeight)
     }
 }
 
