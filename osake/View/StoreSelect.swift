@@ -26,11 +26,14 @@ struct StoreSelect: View {
     }
     
     var body: some View {
-        NavigationView {
             Form{
                 List {
                     ForEach(storeList, id:\.self) { store in
-                        Text(store.name!)
+                        NavigationLink(
+                            destination: StoreDetail(store: store),
+                            label: {
+                                Text(store.name!)
+                            })
                     }
                     .onDelete(perform: storedelete)
                 }
@@ -41,7 +44,6 @@ struct StoreSelect: View {
                 }
             }
             .navigationBarTitle(Text("🏬の選択"))
-        }
         QuickNewStore().padding()
     }
 }
@@ -64,6 +66,8 @@ struct StoreSelect_Previews: PreviewProvider {
         Store.create(in: viewContext, name: "山内農場")
         
         return
-            StoreSelect().environment(\.managedObjectContext, viewContext).navigationBarItems(trailing: EditButton())
+            NavigationView {
+                StoreSelect().environment(\.managedObjectContext, viewContext).navigationBarItems(trailing: EditButton())
+            }
     }
 }

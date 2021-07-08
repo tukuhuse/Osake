@@ -35,6 +35,17 @@ struct StoreDetailContent: View {
                     Slider(value: $store.drinkcostperformance, in: 0...5, step: 0.5)
                     Text("\(store.drinkcostperformance)")
                 }
+                Section(header: Text("店の場所")) {
+                    HStack {
+                        Button(action: {}) {
+                            Text("現在地を取得")
+                        }
+                        Spacer()
+                        Button(action: {}) {
+                            Text("地図上で選択").foregroundColor(.red)
+                        }
+                    }
+                }
                 Section(header: Text("コメント")) {
                     TextEditor(text: Binding($store.comment, ""))
                 }
