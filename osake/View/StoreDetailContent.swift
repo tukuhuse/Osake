@@ -4,13 +4,14 @@
 //
 //  Created by 高橋優人 on 2021/07/04.
 //
-
+import MapKit
 import SwiftUI
 
 struct StoreDetailContent: View {
     @ObservedObject var store: Store
     @ObservedObject var keyboard = KeyboardObserver()
     @Environment(\.managedObjectContext) var viewContext
+    @State var manager = CLLocationManager()
     
     fileprivate func save() {
         do {
@@ -19,6 +20,14 @@ struct StoreDetailContent: View {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+    }
+    
+    fileprivate func nowlocationsearch() {
+
+        manager.requestLocation()
+        
+        store.latitude = (manager.location?.coordinate.latitude)!
+        store.longitude = (manager.location?.coordinate.longitude)!
     }
     
     var body: some View {
@@ -37,14 +46,19 @@ struct StoreDetailContent: View {
                 }
                 Section(header: Text("店の場所")) {
                     HStack {
-                        Button(action: {}) {
-                            Text("現在地を取得")
+                        Button(action: {
+                            nowlocationsearch()
+                        }) {
+                            Text("現在地を登録")
                         }
                         Spacer()
                         Button(action: {}) {
                             Text("地図上で選択").foregroundColor(.red)
                         }
                     }
+                    Text("登録座標")
+                    Text("緯度:\(store.latitude)")
+                    Text("経度:\(store.longitude)")
                 }
                 Section(header: Text("コメント")) {
                     TextEditor(text: Binding($store.comment, ""))
