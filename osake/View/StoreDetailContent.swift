@@ -11,8 +11,9 @@ struct StoreDetailContent: View {
     @ObservedObject var store: Store
     @ObservedObject var keyboard = KeyboardObserver()
     @Environment(\.managedObjectContext) var viewContext
-    @State var manager = CLLocationManager()
-    
+    @EnvironmentObject var location = LocationViewModel()
+    @State private var showingsheet = false
+
     fileprivate func save() {
         do {
             try self.viewContext.save()
@@ -20,14 +21,6 @@ struct StoreDetailContent: View {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-    }
-    
-    fileprivate func nowlocationsearch() {
-
-        manager.requestLocation()
-        
-        store.latitude = (manager.location?.coordinate.latitude)!
-        store.longitude = (manager.location?.coordinate.longitude)!
     }
     
     var body: some View {
@@ -47,13 +40,22 @@ struct StoreDetailContent: View {
                 Section(header: Text("店の場所")) {
                     HStack {
                         Button(action: {
-                            nowlocationsearch()
+                            self.location.start()
+                            store.latitude = location.lastknownlocation!.latitude
+                            store.longitude = location.lastknownlocation!.longitude
+                            
+                            self.save()
                         }) {
                             Text("現在地を登録")
                         }
                         Spacer()
-                        Button(action: {}) {
+                        Button(action: {
+                            self.showingsheet.toggle()
+                        }) {
                             Text("地図上で選択").foregroundColor(.red)
+                        }
+                        .sheet(isPresented: $showingsheet) {
+                            StoreMap()
                         }
                     }
                     Text("登録座標")

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D13FB03A269AED8F007FF978 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13FB039269AED8F007FF978 /* MapView.swift */; };
+		D13FB03E269B3B6B007FF978 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13FB03D269B3B6B007FF978 /* LocationViewModel.swift */; };
 		D1677B322691D12D00D9E454 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1677B312691D12D00D9E454 /* KeyboardObserver.swift */; };
 		D1677B342691F1FD00D9E454 /* StoreDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1677B332691F1FD00D9E454 /* StoreDetail.swift */; };
 		D1677B362691F24000D9E454 /* StoreDetailContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1677B352691F24000D9E454 /* StoreDetailContent.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D13FB039269AED8F007FF978 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D13FB03D269B3B6B007FF978 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		D1677B312691D12D00D9E454 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		D1677B332691F1FD00D9E454 /* StoreDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetail.swift; sourceTree = "<group>"; };
 		D1677B352691F24000D9E454 /* StoreDetailContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailContent.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 				D1E37059268E069A00543507 /* StoreSelect.swift */,
 				D1677B332691F1FD00D9E454 /* StoreDetail.swift */,
 				D1677B352691F24000D9E454 /* StoreDetailContent.swift */,
+				D13FB039269AED8F007FF978 /* MapView.swift */,
 				D1F9920A2693575300B27784 /* StarSlider.swift */,
 				D1677B372691F25100D9E454 /* StoreDetailMenu.swift */,
 			);
@@ -195,6 +200,7 @@
 		D1BDFFA62688C0AB001F9398 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D13FB03D269B3B6B007FF978 /* LocationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = D1BDFF672688BFF4001F9398;
 			productRefGroup = D1BDFF712688BFF4001F9398 /* Products */;
@@ -331,10 +338,12 @@
 				D1BDFFAC2689F6CD001F9398 /* Category+Extension.swift in Sources */,
 				D1E37058268E030600543507 /* Store+Extension.swift in Sources */,
 				D1677B382691F25100D9E454 /* StoreDetailMenu.swift in Sources */,
+				D13FB03E269B3B6B007FF978 /* LocationViewModel.swift in Sources */,
 				D1BDFF7D2688BFF4001F9398 /* Persistence.swift in Sources */,
 				D1BDFF802688BFF4001F9398 /* osake.xcdatamodeld in Sources */,
 				D1677B3A2691F6FC00D9E454 /* Binding+Extension.swift in Sources */,
 				D1D5AFA5268CA13E005872F6 /* addCategoryList.swift in Sources */,
+				D13FB03A269AED8F007FF978 /* MapView.swift in Sources */,
 				D1F9920B2693575300B27784 /* StarSlider.swift in Sources */,
 				D1E3705A268E069A00543507 /* StoreSelect.swift in Sources */,
 				D1BDFF762688BFF4001F9398 /* ContentView.swift in Sources */,
