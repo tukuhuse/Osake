@@ -4,16 +4,21 @@
 //
 //  Created by 高橋優人 on 2021/07/04.
 //
-import MapKit
+import CoreLocation
 import SwiftUI
 
 struct StoreDetailContent: View {
     @ObservedObject var store: Store
     @ObservedObject var keyboard = KeyboardObserver()
     @Environment(\.managedObjectContext) var viewContext
-    @EnvironmentObject var location = LocationViewModel()
+    //@EnvironmentObject var location = LocationViewModel()
+    @Environment(\.presentationMode) var presentationMode
     @State private var showingsheet = false
-
+    /*
+    @State private var manager:CLLocationManager
+    @State private var location:CLLocationCoordinate2D
+*/
+ 
     fileprivate func save() {
         do {
             try self.viewContext.save()
@@ -38,23 +43,38 @@ struct StoreDetailContent: View {
                     Text("\(store.drinkcostperformance)")
                 }
                 Section(header: Text("店の場所")) {
-                    HStack {
-                        Button(action: {
-                            self.location.start()
-                            store.latitude = location.lastknownlocation!.latitude
-                            store.longitude = location.lastknownlocation!.longitude
+                    
+                    Button(action: {
+                        var manager:CLLocationManager
+                        var location:CLLocationCoordinate2D
+                        manager = CLLocationManager()
+                        manager.requestWhenInUseAuthorization()
+                        switch manager.authorizationStatus {
+                        case .denied:
+                            print("error")
+                        default:
+                            manager.startUpdatingLocation()
+                            location = manager.location!.coordinate
+                            
+                            store.latitude = location.latitude
+                            store.longitude = location.longitude
                             
                             self.save()
-                        }) {
-                            Text("現在地を登録")
                         }
-                        Spacer()
-                        Button(action: {
-                            self.showingsheet.toggle()
-                        }) {
-                            Text("地図上で選択").foregroundColor(.red)
-                        }
-                        .sheet(isPresented: $showingsheet) {
+                    }) {
+                        Text("現在地を登録")
+                    }
+                    Button(action: {
+                        self.showingsheet.toggle()
+                    }) {
+                        Text("地図上で選択").foregroundColor(.red)
+                    }
+                    .sheet(isPresented: $showingsheet) {
+                        VStack {
+                            Button("❌") {
+                                self.showingsheet=false
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
                             StoreMap()
                         }
                     }
