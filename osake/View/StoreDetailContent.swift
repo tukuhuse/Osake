@@ -11,13 +11,7 @@ struct StoreDetailContent: View {
     @ObservedObject var store: Store
     @ObservedObject var keyboard = KeyboardObserver()
     @Environment(\.managedObjectContext) var viewContext
-    //@EnvironmentObject var location = LocationViewModel()
-    @Environment(\.presentationMode) var presentationMode
     @State private var showingsheet = false
-    /*
-    @State private var manager:CLLocationManager
-    @State private var location:CLLocationCoordinate2D
-*/
  
     fileprivate func save() {
         do {
@@ -59,6 +53,8 @@ struct StoreDetailContent: View {
                             store.latitude = location.latitude
                             store.longitude = location.longitude
                             
+                            manager.stopUpdatingLocation()
+                            
                             self.save()
                         }
                     }) {
@@ -71,11 +67,12 @@ struct StoreDetailContent: View {
                     }
                     .sheet(isPresented: $showingsheet) {
                         VStack {
-                            Button("❌") {
-                                self.showingsheet=false
-                                self.presentationMode.wrappedValue.dismiss()
+                            Button(action: {
+                                self.showingsheet = false
+                            }) {
+                                Text("❌")
                             }
-                            StoreMap()
+                            StoreMap(store: store)
                         }
                     }
                     Text("登録座標")
@@ -86,7 +83,8 @@ struct StoreDetailContent: View {
                     TextEditor(text: Binding($store.comment, ""))
                 }
             }
-            .navigationTitle("お店の情報")
+            .navigationBarTitle("店舗情報")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {

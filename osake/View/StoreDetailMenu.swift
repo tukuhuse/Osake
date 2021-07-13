@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct StoreDetailMenu: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            Section(header: Text("蒸留酒")) {
+                Text("ウイスキー")
+            }
+        }
+        .listStyle(InsetGroupedListStyle())
     }
 }
 

@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import CoreData
 import MapKit
 import CoreLocation
 
 struct StoreMap: View {
     
+    @ObservedObject var store: Store
     @State var manager = CLLocationManager()
     @State var alert = false
     
     var body: some View {
-        MapView(manager: $manager, alert: $alert).alert(isPresented: $alert, content: {
+        MapView(store: store,manager: $manager, alert: $alert).alert(isPresented: $alert, content: {
             Alert(title: Text("位置情報取得の許可をお願いします"))
         })
     }
@@ -26,6 +28,7 @@ struct MapView: UIViewRepresentable {
     
     typealias UIViewType = MKMapView
     
+    @ObservedObject var store: Store
     @Binding var manager: CLLocationManager
     @Binding var alert: Bool
     
@@ -37,7 +40,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> MKMapView {
-        let center = CLLocationCoordinate2D(latitude: 35.6804, longitude: 139.7690)
+        let center = CLLocationCoordinate2D(latitude: store.latitude, longitude: store.longitude)
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 10000, longitudinalMeters: 10000)
         map.region = region
         
@@ -49,11 +52,13 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
+        /*
         let coordinate = CLLocationCoordinate2D(latitude: 35.6804, longitude: 139.7690)
         let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         
         uiView.setRegion(region, animated: true)
+        */
     }
     
     class Coordinator: NSObject, CLLocationManagerDelegate {
@@ -86,8 +91,11 @@ struct MapView: UIViewRepresentable {
                 
                 let place = places?.first?.locality
                 point.title = place
-                point.subtitle = "Current Place"
-                point.coordinate = location!.coordinate
+                point.subtitle = self.parent.store.name
+                //point.coordinate = location!.coordinate
+                point.coordinate.latitude = self.parent.store.latitude
+                point.coordinate.longitude = self.parent.store.longitude
+                
                 self.parent.map.removeAnnotations(self.parent.map.annotations)
                 self.parent.map.addAnnotation(point)
                 
@@ -100,9 +108,18 @@ struct MapView: UIViewRepresentable {
     
 }
 
-struct MapView_Previews: PreviewProvider {
+struct StoreMap_Previews: PreviewProvider {
+    
     static var previews: some View {
-        StoreMap()
-            .preferredColorScheme(.dark)
+        
+        let viewContext = PersistenceController.shared.container.viewContext
+        let newStore = Store(context: viewContext)
+        
+        newStore.name = "千秋"
+        newStore.latitude = 35.6804
+        newStore.longitude = 139.7690
+        
+        return StoreMap(store: newStore)
+            .environment(\.managedObjectContext, viewContext)
     }
 }
