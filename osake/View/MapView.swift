@@ -40,25 +40,34 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> MKMapView {
-        let center = CLLocationCoordinate2D(latitude: store.latitude, longitude: store.longitude)
+        let center = CLLocationCoordinate2D(latitude: self.store.latitude, longitude: self.store.longitude)
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 10000, longitudinalMeters: 10000)
         map.region = region
+        
+        let point = MKPointAnnotation()
+        point.title = self.store.name
+        point.subtitle = self.store.name
+        point.coordinate.latitude = self.store.latitude
+        point.coordinate.longitude = self.store.longitude
+        
+        map.addAnnotation(point)
         
         manager.delegate = context.coordinator
         manager.startUpdatingLocation()
         map.showsUserLocation = true
         manager.requestWhenInUseAuthorization()
+        
         return map
     }
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
-        /*
-        let coordinate = CLLocationCoordinate2D(latitude: 35.6804, longitude: 139.7690)
+        
+        let coordinate = CLLocationCoordinate2D(latitude: self.store.latitude, longitude: self.store.longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         
         uiView.setRegion(region, animated: true)
-        */
+        
     }
     
     class Coordinator: NSObject, CLLocationManagerDelegate {
@@ -79,7 +88,6 @@ struct MapView: UIViewRepresentable {
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             
             let location = locations.last
-            let point = MKPointAnnotation()
             let georeader = CLGeocoder()
             
             georeader.reverseGeocodeLocation(location!) { (places, err) in
@@ -89,18 +97,10 @@ struct MapView: UIViewRepresentable {
                     return
                 }
                 
-                let place = places?.first?.locality
-                point.title = place
-                point.subtitle = self.parent.store.name
-                //point.coordinate = location!.coordinate
-                point.coordinate.latitude = self.parent.store.latitude
-                point.coordinate.longitude = self.parent.store.longitude
-                
-                self.parent.map.removeAnnotations(self.parent.map.annotations)
-                self.parent.map.addAnnotation(point)
-                
+                /*
                 let region = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 10000, longitudinalMeters: 100000)
                 self.parent.map.region = region
+                */
             }
         }
         

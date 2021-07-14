@@ -4,6 +4,7 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="kind" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="osake" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Osake" inverseName="category" inverseEntity="Osake"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -17,6 +18,8 @@
         <attribute name="smell" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="store_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sweetness" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="osake" inverseEntity="Category"/>
+        <relationship name="store" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Store" inverseName="osake" inverseEntity="Store"/>
     </entity>
     <entity name="Store" representedClassName="Store" syncable="YES" codeGenerationType="class">
         <attribute name="comment" optional="YES" attributeType="String"/>
@@ -26,11 +29,12 @@
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="osake" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Osake" inverseName="store" inverseEntity="Osake"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-54" positionY="54" width="128" height="74"/>
+        <element name="Category" positionX="-54" positionY="54" width="128" height="89"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="Osake" positionX="-63" positionY="-9" width="128" height="149"/>
-        <element name="Store" positionX="-54" positionY="63" width="128" height="134"/>
+        <element name="Osake" positionX="-63" positionY="-9" width="128" height="179"/>
+        <element name="Store" positionX="-54" positionY="63" width="128" height="149"/>
     </elements>
 </model>

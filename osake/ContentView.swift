@@ -12,7 +12,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 NavigationLink(
-                    destination: CategorySelect(kind: .liquor),
+                    destination: CategorySelect(),
                     label: {
                         Text("お酒の種類を選択")
                     })

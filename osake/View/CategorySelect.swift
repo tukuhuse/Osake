@@ -10,13 +10,31 @@ import CoreData
 
 struct CategorySelect: View {
     
+    var body: some View {
+        Form {
+            ForEach(Category.kind.allCases, id: \.self) { categorykind in
+                CategorySelectRow(kind: categorykind)
+            }
+        }
+    }
+    
+}
+
+struct CategorySelectRow: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Category.name, ascending: true)], animation: .default) var CategoryList: FetchedResults<Category>
-    
     @State var kind: Category.kind
     @State var addflag: Bool = false
     
-    fileprivate func deleteCategory(at offsets: IndexSet) {
+    /*
+     @Environment(\.managedObjectContext) private var viewContext
+     @ObservedObject var CategoryList: Category
+     @Binding var kind: Category.kind
+     @State var addflag: Bool = false
+     */
+    
+    func deleteCategory(at offsets: IndexSet) {
         for index in offsets {
             let entity = CategoryList[index]
             viewContext.delete(entity)
@@ -30,7 +48,7 @@ struct CategorySelect: View {
     
     var body: some View {
         Section(header: HStack{
-                    Text("\(kind.toString())")
+            Text("\(kind.toString())")
             Spacer()
             Button(action: {
                 self.addflag = true
@@ -43,7 +61,7 @@ struct CategorySelect: View {
                     addCategoryList(addflag: $addflag,kind: $kind)
                 }
                 ForEach(CategoryList, id:\.self) { category in
-                    if self.kind.rawValue == category.kind {
+                    if kind.rawValue == category.kind {
                         Text(category.name!)
                     }
                 }.onDelete(perform: deleteCategory)
@@ -75,8 +93,11 @@ struct CategorySelect_Previews: PreviewProvider {
         Category.create(in: viewContext, name: "ウォッカ", kind: .spirit)
         
         return Form{
-            CategorySelect(kind: .liquor).environment(\.managedObjectContext, viewContext)
-            CategorySelect(kind: .spirit).environment(\.managedObjectContext, viewContext)
+            CategorySelect().environment(\.managedObjectContext, viewContext)
+            /*
+             CategorySelect(kind: .liquor).environment(\.managedObjectContext, viewContext)
+             CategorySelect(kind: .spirit).environment(\.managedObjectContext, viewContext)
+             */
         }
     }
 }

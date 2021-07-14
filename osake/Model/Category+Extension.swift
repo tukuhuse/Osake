@@ -26,7 +26,7 @@ extension Category {
         
     }
     
-    enum kind: Int16 {
+    enum kind: Int16, CaseIterable {
         
         case liquor //醸造酒
         case spirit //蒸留酒
