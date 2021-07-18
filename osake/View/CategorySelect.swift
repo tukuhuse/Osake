@@ -94,10 +94,6 @@ struct CategorySelect_Previews: PreviewProvider {
         
         return Form{
             CategorySelect().environment(\.managedObjectContext, viewContext)
-            /*
-             CategorySelect(kind: .liquor).environment(\.managedObjectContext, viewContext)
-             CategorySelect(kind: .spirit).environment(\.managedObjectContext, viewContext)
-             */
         }
     }
 }

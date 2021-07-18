@@ -10,6 +10,8 @@ import CoreData
 
 struct StoreDetailMenu: View {
     
+    @Environment(\.managedObjectContext) var viewContext
+    
     var body: some View {
         List {
             Section(header: Text("蒸留酒")) {
@@ -21,7 +23,10 @@ struct StoreDetailMenu: View {
 }
 
 struct StoreDetailMenu_Previews: PreviewProvider {
+    
+    static let viewContext = PersistenceController.preview.container.viewContext
+    
     static var previews: some View {
-        StoreDetailMenu()
+        StoreDetailMenu().environment(\.managedObjectContext, viewContext)
     }
 }
