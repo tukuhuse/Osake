@@ -43,7 +43,7 @@ struct StoreSelect: View {
                     EditButton()
                 }
             }
-            .navigationBarTitle(Text("🏬の選択"))
+            .navigationTitle(Text("🏬の選択"))
         QuickNewStore().padding()
     }
 }

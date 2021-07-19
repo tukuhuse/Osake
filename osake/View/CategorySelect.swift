@@ -17,7 +17,6 @@ struct CategorySelect: View {
             }
         }
     }
-    
 }
 
 struct CategorySelectRow: View {
@@ -56,16 +55,16 @@ struct CategorySelectRow: View {
                 Text("追加")
             })
         }) {
-            List {
-                if self.addflag {
-                    addCategoryList(addflag: $addflag,kind: $kind)
-                }
-                ForEach(CategoryList, id:\.self) { category in
-                    if kind.rawValue == category.kind {
+            if self.addflag {
+                addCategoryList(addflag: $addflag,kind: $kind)
+            }
+            ForEach(CategoryList, id:\.self) { category in
+                if kind.rawValue == category.kind {
+                    NavigationLink(destination: CategoryStoreList()) {
                         Text(category.name!)
                     }
-                }.onDelete(perform: deleteCategory)
-            }
+                }
+            }.onDelete(perform: deleteCategory)
         }
     }
 }

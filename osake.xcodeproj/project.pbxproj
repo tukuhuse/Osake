@@ -15,6 +15,7 @@
 		D1677B382691F25100D9E454 /* StoreDetailMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1677B372691F25100D9E454 /* StoreDetailMenu.swift */; };
 		D1677B3A2691F6FC00D9E454 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1677B392691F6FC00D9E454 /* Binding+Extension.swift */; };
 		D16D1C3F2691C83700C9C1F2 /* QuickNewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D1C3E2691C83700C9C1F2 /* QuickNewStore.swift */; };
+		D195C04126A5DB3F0055BD3B /* CategoryStoreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195C04026A5DB3F0055BD3B /* CategoryStoreList.swift */; };
 		D1BDFF742688BFF4001F9398 /* osakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDFF732688BFF4001F9398 /* osakeApp.swift */; };
 		D1BDFF762688BFF4001F9398 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDFF752688BFF4001F9398 /* ContentView.swift */; };
 		D1BDFF782688BFF4001F9398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BDFF772688BFF4001F9398 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		D1677B372691F25100D9E454 /* StoreDetailMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailMenu.swift; sourceTree = "<group>"; };
 		D1677B392691F6FC00D9E454 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		D16D1C3E2691C83700C9C1F2 /* QuickNewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickNewStore.swift; sourceTree = "<group>"; };
+		D195C04026A5DB3F0055BD3B /* CategoryStoreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryStoreList.swift; sourceTree = "<group>"; };
 		D1BDFF702688BFF4001F9398 /* osake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = osake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BDFF732688BFF4001F9398 /* osakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = osakeApp.swift; sourceTree = "<group>"; };
 		D1BDFF752688BFF4001F9398 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				D13FB039269AED8F007FF978 /* MapView.swift */,
 				D1F9920A2693575300B27784 /* StarSlider.swift */,
 				D1677B372691F25100D9E454 /* StoreDetailMenu.swift */,
+				D195C04026A5DB3F0055BD3B /* CategoryStoreList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				D1BDFFB0268A1A94001F9398 /* Osake+Extension.swift in Sources */,
 				D1677B362691F24000D9E454 /* StoreDetailContent.swift in Sources */,
 				D16D1C3F2691C83700C9C1F2 /* QuickNewStore.swift in Sources */,
+				D195C04126A5DB3F0055BD3B /* CategoryStoreList.swift in Sources */,
 				D1677B322691D12D00D9E454 /* KeyboardObserver.swift in Sources */,
 				D1BDFFAE268A0F73001F9398 /* CategorySelect.swift in Sources */,
 			);
